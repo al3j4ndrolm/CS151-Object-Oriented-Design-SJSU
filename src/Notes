@@ -1,0 +1,66 @@
+
+Why OOD?
+It is the key to produce code that is robust, reliable and maintainable
+
+Example: RICK'S GUITARS - Inventory Management Application
+
+    - Version #1 - Guitar Class
+        - public class Guitar {
+            private String serialNumber;
+            private String builder;
+            private String model;
+            private String type ... and so on
+        }
+
+        - why private? So nothing out of this class alter any of the values of the object
+
+        - public class Inventory {
+            private List<Guitar> guitars;
+            public Inventory() {
+                guitars = new ArrayList()
+
+            It would also have methods like: Add guitar, search guitar in the inventory ... etc
+        }
+
+        - IMPORTANT JAVA GOTCHA:
+            1. equals for string, using == would make it compare the reference
+            2. Comparisons are case sensitive:
+                - If we search for Stratocaster but the user input stratocaster
+                it would not find anything because of the first letter unmapping
+                example: "stratocaster" != "Stratocaster"
+
+        - TEST is ESSENTIAL, for every 2 hours of writing code, spend 1 writing test (good practice)
+            - I would likely find problems by doing test instead of just running the program
+
+            Types of test:
+                - Unit test: for each class and method
+                - Functional Test: for overall program functionality
+                - Stress Test: test limit and capacity
+                - Error tests: test boundary conditions, error conditions
+                [!] run test regression tests
+
+    - Version #2 - Remove String Fields
+        [!] Try to make as many things an enumerated type
+
+    # Design principle
+    [!] Search "encapsulation" java
+        - Create GuitarSpec class that represents attributes of a guitar
+        - Only the GuitarSpec should change if the attributes of guitar changes
+
+    [!] Remember: A is-a B, X has-a Y (X aggregates Y)
+
+    # Design principle
+    [!] Refactoring: Changing the internal structure of the code to improve its design and
+    maintainability while keeping the same interface
+
+    # Design principle
+    [!] Delegation: An object hands off a responsability
+    to another object instead of doing the work itself. This is often required for encapsulation.
+
+    [!] Deprecation
+    Sometimes interface would have to change in order to fix the design issues
+    It means warning to developers to stop using it because it may go away in future versions
+
+RECOMMENDED: OOSD in C++ Chapter 2 15-33
+
+
